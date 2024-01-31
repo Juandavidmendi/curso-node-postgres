@@ -18,28 +18,38 @@ const UserSchema = {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  role: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    defaultValue: 'customer',
+  },
   createdAt: {
     allowNull: false,
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue: Sequelize.NOW,
   },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    field: 'update_at',
+    defaultValue: Sequelize.NOW,
+  },
 };
 
-class User extends Model{
-  static associate(){
+class User extends Model {
+  static associate() {
     //relaciones
   }
 
-  static config(sequelize){
+  static config(sequelize) {
     return {
       sequelize,
       tableName: USER_TABLA,
       modelNAme: 'User',
       timeStamps: false,
-    }
+    };
   }
 }
 
-
-module.exports = { USER_TABLA, UserSchema, User }
+module.exports = { USER_TABLA, UserSchema, User };

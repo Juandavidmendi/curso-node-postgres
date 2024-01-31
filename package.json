@@ -6,7 +6,16 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "lint": "eslint"
+    "lint": "eslint",
+    "model:generate": "npx sequelize-cli model:generate --name",
+    "migrations:generate": "npx sequelize-cli migration:generate --name",
+    "migrations:migrate": "npx sequelize-cli db:migrate",
+    "migrations:undo": "npx sequelize-cli db:migrate:undo",
+    "migrations:undo:all": "npx sequelize-cli db:migrate:undo:all",
+    "seeders:generate": "npx sequelize-cli seed:generate",
+    "seeders:all": "npx sequelize-cli db:seed:all",
+    "seeders:undo": "npx sequelize-cli db:seed:undo --seed",
+    "seeders:undo:all": "npx sequelize-cli db:seed:undo:all"
   },
   "keywords": [],
   "author": "",
