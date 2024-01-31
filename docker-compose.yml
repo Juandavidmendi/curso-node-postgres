@@ -3,7 +3,7 @@ version: "3.3"
 services:
   postgres:
     image: postgres:13
-    environment: # Corregir la clave a 'environment'
+    environment:
       - POSTGRES_DB=my_store
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=secretpassword
@@ -19,3 +19,23 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - 5050:80
+
+  mysql:
+    image: mysql:5
+    environment:
+      - MYSQL_DATABASE=my_store
+      - MYSQL_USER=postgres
+      - MYSQL_ROOT_PASSWORD=secretpassword
+      - MYSQL_PORT=3306
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - MYSQL_ROOT_PASSWORD=secretpassword
+      - PMA_HOST=mysql
+    ports:
+      - "8080:80"
